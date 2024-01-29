@@ -1,4 +1,3 @@
-// Code your design here
 module HalfAdder(a1,b1,sum,carry);
   input a1,b1;
   output sum,carry;
@@ -59,4 +58,9 @@ module Dadda4x4(b3,a3,prod,clk);
   PartialProduct Pp1(b3,a3,pp1);
   // Level j=2 d2=3
   wire ps2_1,ps2_2,pc2_1,pc2_2
+  HalfAdder hf7_10(pp[7],pp[10],ps2_1,pc2_1);
+  HalfAdder hf9_12(pp[9],pp[12],ps2_2,pc2_2);
   
+  //Level j=1,d1=2
+  wire ps1_1,ps1_2,pc1_1,pc1_2,ps1_3,ps1_4,pc1_3,pc1_4,ps1_5,pc1_5
+  HalfAdder hf7_10();
