@@ -15,17 +15,7 @@ module FullAdder(a,b,cin,sumfa,cout);
   or or1(cout,c1,c2);
 endmodule
 
-module DFF(d,clk,clear,q); 
-  input d, clk, clear;
-  output reg q;
-  always@(posedge clk)
-    begin
-      if (clear == 1)
-        q <= 0;
-      else
-        q<= d;
-    end
-endmodule
+
   
 endmodule
 module PartialProduct(b2,a2,pp);
@@ -63,4 +53,7 @@ module Dadda4x4(b3,a3,prod,clk);
   
   //Level j=1,d1=2
   wire ps1_1,ps1_2,pc1_1,pc1_2,ps1_3,ps1_4,pc1_3,pc1_4,ps1_5,pc1_5
-  HalfAdder hf7_10();
+  HalfAdder hf(pp[5],pp[8],ps1_1,pc1_1);
+  FullAdder fl0(pp[3],pp[6],ps2_2,ps1_2,pc1_2);
+  FullAdder fl1(pp[13],ps2_1,pc2_2,ps1_3,pc1_3);
+  FullAdder fl2(pp[11],pp[14],pc2_1,ps1_4,pc1_4);
