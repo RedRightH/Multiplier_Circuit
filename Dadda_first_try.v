@@ -54,7 +54,7 @@ endmodule
 module Dadda4x4(b3,a3,prod);
   input[3:0]a3,b3;
   output[7:0]prod;
-  wire[15:0]pp1;
+  wire[15:0]pp1; // Faced an error here in VIVADO but the EDAplayground raised no error when this line was absent
   
   PartialProduct Pp1(b3,a3,pp1);
   // Level j=2 d2=3
