@@ -113,28 +113,26 @@ endmodule
 // testbench
 //---------------------------------------------------------
 
-module testbench;
-  reg clk;  
-  reg reset;    
-  wire [2:0] q;    
-  
-
-  up_counter_3bit counter(.q(q), .clk(clk), .reset(reset));
-
-
-  always begin
-    #5 clk = ~clk;
-  end
-	
- initial begin
-    $dumpfile("testbench.vcd");
-  	$dumpvars(0,testbench);  
- 
-    clk = 0;
-    reset = 0;
-    reset = 1;
-    #10 reset = 0;
-    #50 $finish;
-  end
-  
+module testbench();
+    reg [3:0] A;
+    reg [3:0] B;
+    reg clk;
+    wire [7:0] prod;
+    
+    DADDA dut(.A(A),.B(B),.clk(clk),.prod(prod));
+    
+        initial
+        begin
+            clk = 0;
+            forever #5 clk <= ~clk;
+        end
+    
+        initial begin
+        $dumpfile("testbench.vcd");
+        $dumpvars(0,testbench);
+        
+        A = 4'b0100;B = 4'b0011;
+        #100
+      $finish();
+     end
 endmodule
